@@ -1,0 +1,164 @@
+<div class="main-body w-full bg-[#141414] text-white">
+  <div
+    class="navbar w-100 min-h-[5rem] flex items-center justify-between px-10"
+  >
+    <img id="logo" src="assets/images/netflix-logo.png" alt="" />
+    <div class="menu flex gap-10">
+      <div class="menu-left">
+        <ul class="text-white flex gap-3">
+          <li>Home</li>
+          <li>TV Programmes</li>
+          <li>Films</li>
+          <li>Recently Added</li>
+          <li>My List</li>
+        </ul>
+      </div>
+
+      <div class="menu-right text-white flex gap-3 items-center">
+        <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+        <i class="fa-regular fa-bell fa-xl"></i>
+        <i class="fa-regular fa-user fa-xl"></i>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="contents container w-full">
+
+
+    <div class="custom-movie mb-20" *ngIf="customMovie.backdrop_path">
+
+      
+      <div id="default-carousel" class=" w-full" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class=" overflow-cover rounded-lg ">
+          <!-- Item 1 -->
+          <div class="duration-700 ease-in-out " data-carousel-item>
+            <img
+              src="{{customMovie.backdrop_path}}"
+              class=" block banner-image"
+              alt="..."
+            />
+            <div class="contents-foreground">
+              <h1 class="text-white px-10 pt-10 font-semibold header-title ">{{customMovie.title}}</h1>
+              <h2 class="text-white p-10 text-lg pt-0 font-semibold hidden  md:block">{{customMovie.overview}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- --------------Now playing Movie----------------- -->
+
+    <div class="w-full now-playing">
+      <h2 class="text-2xl font-bold mb-4 text-white">Now playing movies</h2>
+
+      <div class="flex overflow-x-auto scrolling-touch card-container no-scrollbar" #content>
+        <div
+          class="item p-0 mx-1 flex-shrink-0 card " 
+          *ngFor="let item of nowPlayingMovies?.results" 
+        >
+          <div class="header-image p-0  mt-4 mb-4" (click)="launchVideo(item.id)">
+            <img
+              src="{{ item?.backdrop_path }}"
+              alt="Card Image"
+              class="object-cover mb-4 thumbnail-image"
+              
+            />
+          </div>
+          <div class="title">
+            <h2 class="text-lg font-semibold mb-2 text-center text-white">
+              {{ item?.title }}
+            </h2>
+          </div>
+        </div>
+    </div>
+    </div>
+    
+    <!-- --------------popular Movie----------------- -->
+
+    <div class="w-full popular mt-10">
+      <h2 class="text-2xl font-bold mb-4 text-white">Popular movies</h2>
+      <div class="flex overflow-x-scroll scrolling-touch card-container no-scrollbar">
+        <div
+          class="item p-0 mx-1 flex-shrink-0 card" 
+          *ngFor="let item of popularMovies?.results"
+        >
+          <div class="header-image p-0  mt-4 mb-4" (click)="launchVideo(item.id)">
+            <img
+              src="{{ item?.backdrop_path }}"
+              alt="Card Image"
+              class="object-cover mb-4 thumbnail-image"
+              
+            />
+          </div>
+          <div class="title">
+            <h2 class="text-lg font-semibold mb-2 text-center text-white">
+              {{ item?.title }}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- --------------Top rated Movie----------------- -->
+
+    <div class="w-full top-rated mt-10">
+      <h2 class="text-2xl font-bold mb-4 text-white">Top rated movies</h2>
+      <div class="flex overflow-x-scroll scrolling-touch card-container no-scrollbar">
+        <div
+          class="item p-0 mx-1 flex-shrink-0 card" 
+          *ngFor="let item of topRatedMovies?.results"
+        >
+          <div class="header-image p-0  mt-4 mb-4">
+            <img
+              src="{{ item?.backdrop_path }}"
+              alt="Card Image"
+              class="object-cover mb-4 thumbnail-image" (click)="launchVideo(item.id)"
+              
+            />
+          </div>
+          <div class="title">
+            <h2 class="text-lg font-semibold mb-2 text-center text-white">
+              {{ item?.title }}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- --------------Upcoming Movie----------------- -->
+
+    <div class="w-full top-rated mt-10 ">
+      <h2 class="text-2xl font-bold mb-4 text-white">Upcoming movies</h2>
+      <div class="flex overflow-x-scroll scrolling-touch card-container no-scrollbar">
+        <div
+          class="item p-0 mx-1 flex-shrink-0 card" 
+          *ngFor="let item of upcomingMovies?.results"
+        >
+          <div class="header-image p-0  mt-4 mb-4" (click)="launchVideo(item.id)">
+            <img
+              src="{{ item?.backdrop_path }}"
+              alt="Card Image"
+              class="object-cover mb-4 thumbnail-image"
+              
+            />
+          </div>
+          <div class="title">
+            <h2 class="text-lg font-semibold mb-2 text-center text-white">
+              {{ item?.title }}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </div>
+</div>
